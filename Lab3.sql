@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------
--- Лабораторная 3
+-- Лабораторная 3  -- Кузнецов Д.А -- БИВТ-20-7 -------------------------
 -------------------------------------------------------------------------
 select CST.CompanyName, SOH.SalesOrderID, SOH.TotalDue
 from SalesLT.Customer as CST
@@ -13,3 +13,27 @@ inner join SalesLT.Address as A on CA.AddressID = A.AddressID
 where CA.AddressType = 'Main Office'
 -------------------------------------------------------------------------
 -------------------------------------------------------------------------
+select CompanyName, FirstName, LastName, SalesOrderID, TotalDue
+from SalesLT.SalesOrderHeader as SOH
+    right join SalesLT.Customer as C on C.CustomerID = SOH.CustomerID
+order by TotalDue DESC;
+-------------------------------------------------------------------------
+select C.CustomerID, CompanyName, FirstName, LastName, Phone, AddressID
+from SalesLT.Customer as C
+left join SalesLT.CustomerAddress on C.CustomerID = CustomerAddress.CustomerID
+where AddressID is null
+-------------------------------------------------------------------------
+select C.CustomerID, SOD.ProductID
+from SalesLT.Customer as C
+left outer join SalesLT.SalesOrderHeader as SOH on SOH.CustomerID = C.CustomerID
+left outer join SalesLT.SalesOrderDetail as SOD on SOD.SalesOrderID = SOH.SalesOrderID
+where ProductID is null
+--
+select P.ProductID, CustomerID
+from SalesLT.Product as P
+left outer join SalesLT.SalesOrderDetail as SOD on SOD.ProductID = P.ProductID
+left join SalesLT.SalesOrderHeader as SOH on SOD.SalesOrderID = SOH.SalesOrderID
+where SOD.SalesOrderID is null
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------

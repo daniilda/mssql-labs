@@ -49,7 +49,7 @@ BEGIN
     SELECT ProductCategoryID
     FROM SalesLT.vGetAllCategories
     WHERE ParentProductCategoryName = 'Bikes';
-    IF (3000 >
+    IF (6000 >
         (SELECT AVG(ListPrice)
          FROM SalesLT.Product
          WHERE Product.ProductCategoryID IN (SELECT * FROM @Categories))) -- Или можно в while условия прописать

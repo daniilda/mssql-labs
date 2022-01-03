@@ -100,6 +100,10 @@ INNER JOIN SalesLT.CustomerAddress CA ON CA.CustomerID = C.CustomerID
 INNER JOIN SalesLT.Address A on A.AddressID = CA.AddressID)
 go
 
+SELECT objectproperty(
+    object_id('SalesLT.vProductAndDescription'), 'IsIndexable'
+);
+
 GO
 SELECT * FROM SalesLT.vAllAddresses
 GO
